@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  WeatherApp
 //
-//  Created by lösen är 0000 on 2018-03-18.
+//  Created by Robert on 2018-03-18.
 //  Copyright © 2018 Robert Eriksson. All rights reserved.
 //
 
