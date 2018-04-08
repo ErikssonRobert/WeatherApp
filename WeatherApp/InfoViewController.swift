@@ -14,10 +14,11 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var imageOutfitOne: UIImageView!
     @IBOutlet weak var imageOutfitTwo: UIImageView!
     @IBOutlet weak var labelRecommended: UILabel!
+    @IBOutlet weak var labelSaved: UILabel!
     
     var dynamicAnimator : UIDynamicAnimator!
-    var gravity : UIGravityBehavior!
-    var collision : UICollisionBehavior!
+    var push : UIPushBehavior!
+    var snap : UISnapBehavior!
     
     var weatherInfo : WeatherHolder = WeatherHolder()
     let save = SavedArrays()
@@ -35,12 +36,16 @@ class InfoViewController: UIViewController {
                                     Windspeed: \(self.weatherInfo.windSpeed) m/s
                                     """
         
+        self.labelSaved.isHidden = true
         saveButtonEnabled()
         
         decideCatImages()
         
         // Setup animations
-        //dynamicAnimator = UIDynamicAnimator(referenceView: self.viewWeather)
+        dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
+        snap = UISnapBehavior(item: labelSaved, snapTo: labelSaved.center)
+        snap.damping = 0.2
+        dynamicAnimator.addBehavior(snap)
         animateTextViews()
     }
     
@@ -91,6 +96,15 @@ class InfoViewController: UIViewController {
         array.append(self.weatherInfo)
         print(array)
         save.saveArray(array: array)
+        
+        self.labelSaved.isHidden = false
+
+        push = UIPushBehavior(items: [labelSaved], mode: .instantaneous)
+        push.pushDirection = CGVector(dx: 0.4, dy: 1)
+        push.magnitude = 8.0
+        dynamicAnimator.addBehavior(push)
+        
+        self.saveButtonEnabled()
     }
     
     func saveButtonEnabled() {

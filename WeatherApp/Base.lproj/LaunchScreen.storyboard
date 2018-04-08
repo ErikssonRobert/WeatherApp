@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,13 +17,72 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="raincoat" translatesAutoresizingMaskIntoConstraints="NO" id="egD-o6-zNe">
+                                <rect key="frame" x="16" y="20" width="167.5" height="203.5"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shirt" translatesAutoresizingMaskIntoConstraints="NO" id="VE6-BB-W5P">
+                                <rect key="frame" x="191.5" y="20" width="167.5" height="203.5"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sleeptime" translatesAutoresizingMaskIntoConstraints="NO" id="PXJ-dF-4cQ">
+                                <rect key="frame" x="16" y="443.5" width="167.5" height="203.5"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hatnscarf" translatesAutoresizingMaskIntoConstraints="NO" id="tht-J9-720">
+                                <rect key="frame" x="191.5" y="443.5" width="167.5" height="203.5"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coat" translatesAutoresizingMaskIntoConstraints="NO" id="asv-N9-PPi">
+                                <rect key="frame" x="16" y="231.5" width="167.5" height="204"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunny" translatesAutoresizingMaskIntoConstraints="NO" id="Yf9-Gq-0w1">
+                                <rect key="frame" x="191.5" y="231.5" width="167.5" height="204"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tht-J9-720" secondAttribute="trailing" constant="16" id="0lJ-z9-zOY"/>
+                            <constraint firstItem="egD-o6-zNe" firstAttribute="height" secondItem="VE6-BB-W5P" secondAttribute="height" id="1mu-9m-KuF"/>
+                            <constraint firstItem="asv-N9-PPi" firstAttribute="width" secondItem="egD-o6-zNe" secondAttribute="width" id="4ns-JH-bQk"/>
+                            <constraint firstItem="tht-J9-720" firstAttribute="width" secondItem="Yf9-Gq-0w1" secondAttribute="width" id="4tP-bz-Kec"/>
+                            <constraint firstItem="tht-J9-720" firstAttribute="height" secondItem="Yf9-Gq-0w1" secondAttribute="height" id="5Oa-zt-bDp"/>
+                            <constraint firstItem="asv-N9-PPi" firstAttribute="height" secondItem="egD-o6-zNe" secondAttribute="height" id="Btg-lR-9Tz"/>
+                            <constraint firstItem="tht-J9-720" firstAttribute="leading" secondItem="PXJ-dF-4cQ" secondAttribute="trailing" constant="8" id="EyZ-zL-zfj"/>
+                            <constraint firstItem="egD-o6-zNe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GG7-2f-PTp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Yf9-Gq-0w1" secondAttribute="trailing" constant="16" id="GRg-ae-Bl7"/>
+                            <constraint firstItem="Yf9-Gq-0w1" firstAttribute="height" secondItem="egD-o6-zNe" secondAttribute="height" id="HUi-9T-GBT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tht-J9-720" secondAttribute="bottom" constant="20" id="JP4-Jm-i8O"/>
+                            <constraint firstItem="egD-o6-zNe" firstAttribute="width" secondItem="VE6-BB-W5P" secondAttribute="width" id="K7N-mZ-gRJ"/>
+                            <constraint firstItem="Yf9-Gq-0w1" firstAttribute="leading" secondItem="asv-N9-PPi" secondAttribute="trailing" constant="8" id="PsA-YI-OEm"/>
+                            <constraint firstItem="Yf9-Gq-0w1" firstAttribute="top" secondItem="VE6-BB-W5P" secondAttribute="bottom" constant="8" id="Rzo-Pf-TdX"/>
+                            <constraint firstItem="PXJ-dF-4cQ" firstAttribute="top" secondItem="asv-N9-PPi" secondAttribute="bottom" constant="8" id="S3b-cd-s0R"/>
+                            <constraint firstItem="VE6-BB-W5P" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ViI-9p-2A5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VE6-BB-W5P" secondAttribute="trailing" constant="16" id="VwX-Ft-aHc"/>
+                            <constraint firstItem="VE6-BB-W5P" firstAttribute="leading" secondItem="egD-o6-zNe" secondAttribute="trailing" constant="8" id="ZZJ-kZ-Ird"/>
+                            <constraint firstItem="PXJ-dF-4cQ" firstAttribute="width" secondItem="asv-N9-PPi" secondAttribute="width" id="aLd-zx-fYS"/>
+                            <constraint firstItem="asv-N9-PPi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="clk-og-B20"/>
+                            <constraint firstItem="egD-o6-zNe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="hn9-H1-ecF"/>
+                            <constraint firstItem="tht-J9-720" firstAttribute="top" secondItem="Yf9-Gq-0w1" secondAttribute="bottom" constant="8" id="idv-J7-rG6"/>
+                            <constraint firstItem="PXJ-dF-4cQ" firstAttribute="height" secondItem="asv-N9-PPi" secondAttribute="height" id="jQ2-Lv-J33"/>
+                            <constraint firstItem="PXJ-dF-4cQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="oRV-ar-oaF"/>
+                            <constraint firstItem="Yf9-Gq-0w1" firstAttribute="width" secondItem="egD-o6-zNe" secondAttribute="width" id="pPM-e8-zti"/>
+                            <constraint firstItem="Yf9-Gq-0w1" firstAttribute="leading" secondItem="asv-N9-PPi" secondAttribute="trailing" constant="8" id="sJg-Mc-b9Y"/>
+                            <constraint firstItem="asv-N9-PPi" firstAttribute="top" secondItem="egD-o6-zNe" secondAttribute="bottom" constant="8" id="sul-OF-TgN"/>
+                            <constraint firstItem="tht-J9-720" firstAttribute="leading" secondItem="PXJ-dF-4cQ" secondAttribute="trailing" constant="8" id="tcv-J0-gc6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="PXJ-dF-4cQ" secondAttribute="bottom" constant="20" id="vbb-UY-8h3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="coat" width="200" height="200"/>
+        <image name="hatnscarf" width="187" height="130"/>
+        <image name="raincoat" width="193" height="251"/>
+        <image name="shirt" width="200" height="200"/>
+        <image name="sleeptime" width="200" height="150"/>
+        <image name="sunny" width="200" height="200"/>
+    </resources>
 </document>

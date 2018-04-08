@@ -8,35 +8,11 @@
 
 import UIKit
 
-struct Temp : Codable {
-    let temp: Double?
-    let humidity: Int
-}
-
-struct TempResponse : Codable {
-    let main: Temp
-}
-
-struct Speed : Codable {
-    let speed: Double?
-}
-
-struct WindResponse : Codable {
-    let wind: Speed
-}
-
-struct Icon : Codable {
-    let icon: String
-}
-
-struct WeatherResponse : Codable {
-    let weather: [Icon]
-}
-
 class WeatherTableViewController: UITableViewController, UISearchResultsUpdating {
     
     var favourites : [WeatherHolder] = []
     var searchResult : [WeatherHolder] = []
+    var compareArray : [WeatherHolder] = []
     
     var searchController : UISearchController! //Trust me! Det funkar.
 
@@ -56,7 +32,15 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         
         navigationItem.searchController = searchController
         
+        setupLongPress()
+        
         tableView.tableFooterView = UIView()
+    }
+    
+    func setupLongPress() {
+        let longpressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress(longPressGestureRecognizer:)))
+        longpressRecognizer.minimumPressDuration = 1.0
+        self.view.addGestureRecognizer(longpressRecognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +48,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         favourites = load.loadArray()
         updateFavouritesWeather()
         tableView.reloadData()
+        compareArray = [] //reset array for next compare
     }
     
     func updateFavouritesWeather() {
@@ -103,13 +88,13 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
                         //print(String(data: actualData, encoding: String.Encoding.utf8))
                         do {
                             //Structs get their values
-                            let tempResponse = try decoder.decode(TempResponse.self, from: actualData)
+                            let tempResponse = try decoder.decode(BackEndHandler.TempResponse.self, from: actualData)
                             print("Result = \(tempResponse)")
                             
-                            let windResponse = try decoder.decode(WindResponse.self, from: actualData)
+                            let windResponse = try decoder.decode(BackEndHandler.WindResponse.self, from: actualData)
                             print("Result = \(windResponse)")
                             
-                            let weatherResponse = try decoder.decode(WeatherResponse.self, from: actualData)
+                            let weatherResponse = try decoder.decode(BackEndHandler.WeatherResponse.self, from: actualData)
                             print("Result = \(weatherResponse)")
                             
                             let weather = WeatherHolder()
@@ -216,6 +201,7 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         cell.labelCity.text = array[indexPath.row].city.capitalized
         cell.labelTemp.text = "\(array[indexPath.row].temp)°"
         cell.labelIcon.text = array[indexPath.row].icons[array[indexPath.row].icon]
+        cell.setBackgroundColor(icon: cell.weatherData!.icon)
 
         return cell
     }
@@ -242,6 +228,16 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
+    
+    @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        if longPressGestureRecognizer.state == .began {
+            let touchPoint = longPressGestureRecognizer.location(in: self.view)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.cyan
+                compareArray.append((tableView.cellForRow(at: indexPath) as! WeatherTableViewCell).weatherData!)
+            }
+        }
+    }
 
     /*
     // Override to support rearranging the table view.
@@ -265,6 +261,10 @@ class WeatherTableViewController: UITableViewController, UISearchResultsUpdating
         if segue.identifier == "MoreInfoSegue" {
             if let infoViewController = segue.destination as? InfoViewController {
                 infoViewController.weatherInfo = (sender as! WeatherTableViewCell).weatherData!
+            }
+        } else if segue.identifier == "CompareSegue" {
+            if let graphBarViewController = segue.destination as? GraphBarViewController {
+                graphBarViewController.weatherArray = compareArray
             }
         }
     }

@@ -14,6 +14,7 @@ class WeatherTableViewCell: UITableViewCell {
     @IBOutlet weak var labelIcon: UILabel!
     
     var weatherData : WeatherHolder?
+    let beHandler : BackEndHandler = BackEndHandler()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +25,10 @@ class WeatherTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setBackgroundColor(icon: String) {
+        self.backgroundColor = beHandler.decideBackgroundColor(icon: icon)
     }
 
 }
